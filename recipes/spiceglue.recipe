@@ -22,5 +22,6 @@ class Recipe(recipe.Recipe):
         if self.config.target_platform != Platform.WINDOWS:
             self.configure_options += ' --disable-printing --disable-usbredir --disable-clipboard'
         else:
-            self.append_env['CFLAGS'] = ' -O2 -fPIC'
+            self.append_env['CFLAGS'] = ' -O2 -fPIC -DWINVER=0x0600 -D_WIN32_WINNT=0x0600 '
+            self.append_env['CXXFLAGS'] = ' -O2 -fPIC -DWINVER=0x0600 -D_WIN32_WINNT=0x0600 '
 
